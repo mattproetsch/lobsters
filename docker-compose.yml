@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+  lobsters:
+    image: lobsters:32930ab
+    build: .
+    restart: always
+    command:
+      - /bin/sh
+      - "-c"
+      - "./bin/rails db:create && ./bin/setup && rails fake_data && rails server -b 0.0.0.0"
+    volumes:
+      - "./database.yml:/opt/app/lobsters/config/database.yml:ro"
+    depends_on:
+      - mysql
+    ports:
+      - "3000:3000"

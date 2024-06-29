@@ -1,0 +1,17 @@
+development:
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: false
+  database: lobsters_dev
+  host: mysql
+  username: root
+  password: password
+  
+test:
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: false
+  database: lobsters_test
+  host: mysql
+  username: root
+  password: password
